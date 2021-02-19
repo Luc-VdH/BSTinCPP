@@ -5,6 +5,7 @@ using namespace std;
 
 BST::BST(){
     root = NULL;
+    out = "";
 }
 
 void BST::addNode(std::string d){
@@ -16,23 +17,23 @@ void BST::addNode(std::string d){
     if(root == NULL){
         root = tmp;
     }else{
-        struct node current = *root;
+         node *current = root;
         bool unstored = true;
         
         while(unstored){
-            if(current.data.compare(tmp->data) > 0){
-                if(current.right == NULL){
-                    current.right = tmp;
+            if(current->data.compare(tmp->data) > 0){
+                if(current->right == NULL){
+                    current->right = tmp;
                     unstored = false;
                 }else{
-                    current = *current.right;
+                    current = current->right;
                 }
             }else{
-                if(current.left == NULL){
-                    current.left = tmp;
+                if(current->left == NULL){
+                    current->left = tmp;
                     unstored = false;
                 }else{
-                    current = *current.left;
+                    current = current->left;
                 }
             }
         }
@@ -68,6 +69,25 @@ bool BST::isStored(string d){
     
     return stored;
 }
+
+void BST::printData(node *start){
+    if(start != NULL){
+        out = out + start->data + "\n";
+        printData(start->left);
+        //cout << start->data << endl;
+        printData(start->right);
+        
+    }
+
+}
+
+
+std::string BST::printData(){
+    out = "";
+    printData(root);
+    return out;
+}
+
 
 
 

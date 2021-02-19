@@ -9,9 +9,10 @@ int main(){
     string input = "in";
     
     cout << "Enter Data (Strings), d when done:" << endl;
+    cin >> input;
     while(input[0] != 'd'){
-        cin >> input;
         b.addNode(input);
+        cin >> input;
     }
     
     cout << "Test if a string has been stored, q to quit:" << endl;
@@ -25,6 +26,6 @@ int main(){
         
         cin >> input;
     }
-    
+    cout << "All the data stored is:\n" << b.printData() << endl;
     return 0;
 }
